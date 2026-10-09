@@ -1,0 +1,21 @@
+#!/bin/sh
+# emailnews 安装后脚本
+set -e
+
+APP_DIR=/opt/emailnews
+BIN=/usr/bin/emailnews
+
+# 源码目录权限：所有人可读可执行，避免普通用户跑不起来
+if [ -d "$APP_DIR" ]; then
+    chmod -R a+rX "$APP_DIR"
+fi
+
+# 启动器必须可执行
+if [ -f "$BIN" ]; then
+    chmod 755 "$BIN"
+fi
+
+# 模板文件走 share
+if [ -f /usr/share/emailnews/demo.html ]; then
+    chmod 644 /usr/share/emailnews/demo.html
+fi

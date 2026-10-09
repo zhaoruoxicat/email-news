@@ -1,0 +1,92 @@
+.TH EMAILNEWS 1 "2026-10-07" "emailnews 1.0" "用户命令"
+.SH 名称
+emailnews \- 命令行新闻邮件推送程序
+.SH 概要
+.B emailnews
+.RI [ 选项 ]
+.SH 描述
+.B emailnews
+从各公开新闻平台抓取实时热榜与资讯，按分类渲染成 HTML 邮件，
+通过 SMTP 发送到指定邮箱。全部抓取走本机网络直连各平台官方接口，
+不经过任何第三方中转。
+.PP
+程序只面向 Ubuntu 命令行服务器，不需要图形界面。
+不带任何参数运行时会进入交互式配置界面。
+.SH 选项
+.TP
+.B \-send
+抓取最新新闻并立即发送一封邮件。
+.TP
+.BI \-send " \-n " N
+发送时每个平台最多取 N 条。
+.TP
+.B \-send \-\-dry\-run
+只抓取与渲染，不发送，用于检查。
+.TP
+.B \-test
+仅测试 SMTP 连接与登录。
+.TP
+.B \-config
+打印当前配置，密码会脱敏显示。
+.TP
+.BI \-preview " [文件]"
+抓取并渲染到本地 HTML 文件，不发送。省略文件名时
+在当前目录生成 emailnews\-preview.html。
+.TP
+.B \-sources
+列出全部新闻数据源。
+.TP
+.B \-services
+生成定时推送的 systemd 与 cron 配置。
+.TP
+.B \-version
+显示版本号。
+.TP
+.B \-help
+显示帮助。
+.SH 文件
+.TP
+.I ~/.config/emailnews/config.json
+配置与会话信息，权限为 600（仅属主可读写）。
+.TP
+.I /opt/emailnews
+程序源码目录。
+.TP
+.I /usr/share/emailnews/demo.html
+邮件版式模板，可自行修改。
+.SH 环境变量
+.TP
+.B EMAILNEWS_SMTP_PASS
+覆盖配置文件里的 SMTP 密码，便于在服务器上不落盘存放凭据。
+.TP
+.B EMAILNEWS_POP3_PASS
+覆盖配置文件里的 POP3 密码。
+.SH 示例
+首次配置：
+.PP
+.nf
+    emailnews
+.fi
+.PP
+立即发送一封：
+.PP
+.nf
+    emailnews \-send
+.fi
+.PP
+每个平台只取 5 条后发送：
+.PP
+.nf
+    emailnews \-send \-n 5
+.fi
+.PP
+先渲染到本地看看效果：
+.PP
+.nf
+    emailnews \-preview /tmp/preview.html
+.fi
+.SH 注意
+QQ、163、126 等邮箱需要在邮箱后台开启 SMTP 服务并使用「授权码」，
+而不是登录密码。
+.SH 作者
+emailnews contributors

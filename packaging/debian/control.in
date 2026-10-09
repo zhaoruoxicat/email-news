@@ -1,0 +1,19 @@
+Package: emailnews
+Version: @VERSION@
+Section: utils
+Priority: optional
+Architecture: all
+Depends: python3 (>= 3.8), ca-certificates
+Recommends: cron | systemd
+Maintainer: local <local@example.com>
+Homepage: https://example.com/emailnews
+Description: 命令行新闻邮件推送程序
+ emailnews 从各公开新闻平台抓取实时热榜与资讯，按分类渲染成
+ HTML 邮件并通过 SMTP 发送到指定邮箱。
+ .
+ 特性：
+  - 覆盖 35 个新闻源，分实时热榜 / 国内媒体 / 国际媒体 / 科技媒体 / 游戏五类
+  - 全部走本机网络直连各平台官方接口，不经过任何第三方中转
+  - 纯 Python 标准库实现，不依赖任何第三方包
+  - 使用终端即可完成配置与发送：emailnews 打开配置，emailnews -send 立即发送
+  - 只面向 Ubuntu 命令行服务器，不需要图形界面
