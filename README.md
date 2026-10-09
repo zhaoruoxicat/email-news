@@ -4,6 +4,7 @@ Ubuntu 命令行服务器上的**新闻邮件推送程序**。抓取各公开平
 按分类渲染成 HTML 邮件，通过 SMTP 发送到指定邮箱。
 
 只面向命令行，不需要图形界面。纯 Python 标准库实现，**不依赖任何第三方包**。
+<img width="999" height="559" alt="Snipaste_2026-10-09_17-56-44" src="https://github.com/user-attachments/assets/df45a6ab-6630-43cb-acd8-db152b5b9b78" />
 
 ---
 
